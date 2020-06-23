@@ -20,7 +20,7 @@ jobs:
       uses: actions/checkout@v2
     - name: run scan
       id: cdscan
-      uses: cdefense/cli-actions@v1
+      uses: cdefense/cli-actions@v0.1
       env:
         CD_TOKEN: ${{ secrets.CD_TOKEN }}      
       with:
