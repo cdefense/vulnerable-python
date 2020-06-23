@@ -36,7 +36,7 @@ jobs:
         curl https://raw.githubusercontent.com/CloudDefenseAI/cd/master/latest/cd-latest-linux-x64.tar.gz > /tmp/cd-latest-linux-x64.tar.gz
         tar -C /tmp -xzf /tmp/cd-latest-linux-x64.tar.gz
         chmod +x /tmp/cdefense
-        /tmp/cdefense dryrun --lang=python --project-name=vulnerable-python-github-pipeline --api-key=75a81a24-adfc-4bfd-8b32-7562169a9759 --path=requirements.txt
+        /tmp/cdefense scan --lang=python --project-name=vulnerable-python-github-pipeline --api-key=75a81a24-adfc-4bfd-8b32-7562169a9759 --path=requirements.txt
     - name: Test with pytest
       run: |
-        pytest
+        echo pytest
