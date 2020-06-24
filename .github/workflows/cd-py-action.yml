@@ -16,18 +16,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: checkout code
+    - name: Checkout Code
       uses: actions/checkout@v2
-    - name: run scan
+    - name: Run SCA Scan
       id: cdscan
       uses: cdefense/cli-actions@master
       env:
-        CD_API_KEY: ${{ secrets.CD_TOKEN }}      
+        CD_API_KEY: ${{ secrets.CD_API_KEY }}      
         PROJECT_PATH: requirements.txt      
         PROJECT_NAME: python-github-action
       with:
-        command: dryrun
+        command: scan
         args: --verbose
-    # Use the output from the `run scan` step
-    - name: Get the response
-      run: echo "The time was ${{ steps.cdscan.outputs.message }}"
