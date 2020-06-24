@@ -20,12 +20,14 @@ jobs:
       uses: actions/checkout@v2
     - name: run scan
       id: cdscan
-      uses: cdefense/cli-actions@v0.1
+      uses: cdefense/cli-actions@master
       env:
-        CD_TOKEN: ${{ secrets.CD_TOKEN }}      
+        CD_API_KEY: ${{ secrets.CD_TOKEN }}      
+        PROJECT_PATH: requirements.txt      
+        PROJECT_NAME: python-github-action
       with:
         command: dryrun
-        args: --path=${PWD} --verbose --project-name=python-github-action
-    # Use the output from the `hello` step
+        args: --verbose
+    # Use the output from the `run scan` step
     - name: Get the response
       run: echo "The time was ${{ steps.cdscan.outputs.message }}"
