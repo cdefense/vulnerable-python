@@ -24,8 +24,8 @@ jobs:
       env:
         CD_TOKEN: ${{ secrets.CD_TOKEN }}      
       with:
-        command: 'dryrun'
-        args: '--verbose --path=$PWD' 
+        command: dryrun
+        args: --path=${PWD} --verbose --project-name=python-github-action
     # Use the output from the `hello` step
     - name: Get the response
       run: echo "The time was ${{ steps.cdscan.outputs.message }}"
