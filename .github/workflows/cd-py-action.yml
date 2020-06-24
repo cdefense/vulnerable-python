@@ -10,8 +10,8 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
+  # This workflow contains a single job called "scan"
+  scan:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -19,7 +19,6 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v2
     - name: Run SCA Scan
-      id: cdscan
       uses: cdefense/cli-actions@master
       env:
         CD_API_KEY: ${{ secrets.CD_API_KEY }}      
@@ -27,4 +26,4 @@ jobs:
         PROJECT_NAME: python-github-action
       with:
         command: scan
-        args: --verbose
+        #args: --verbose
