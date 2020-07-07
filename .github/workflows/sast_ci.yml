@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: cdefense/sast-scan
-      options: -v $GITHUB_WORKSPACE:/app -e "WORKSPACE=$GITHUB_WORKSPACE"
+      options: -v /__w/vulnerable-python/vulnerable-python:/app -e "WORKSPACE=/__w/vulnerable-python/vulnerable-python"
       
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
