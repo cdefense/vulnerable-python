@@ -28,4 +28,4 @@ jobs:
 
     # Runs a set of commands using the runners shell
     - name: SAST Scan
-      run: python3 /usr/local/src/scan --src /__w/vulnerable-python/vulnerable-python --type python --app_name vulnerable-python --api-key 75a81a24-adfc-4bfd-8b32-7562169a9759
+      run: python3 /usr/local/src/scan --src /__w/vulnerable-python/vulnerable-python --type python --app_name vulnerable-python --api-key ${{ secrets.CD_API_KEY }}
