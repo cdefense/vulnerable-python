@@ -13,6 +13,7 @@ def cmd_api_client(message):
         username = click.prompt('Username')
         password = click.prompt('Password', hide_input=True)
         password1 = click.prompt('Password', hide_input=True)
+        password2 = click.prompt('Password', hide_input=True)
 
         r = requests.post('http://127.0.1.1:5000/api/key', json={'username':username, 'password':password})
 
