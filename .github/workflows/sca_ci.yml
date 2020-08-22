@@ -1,20 +1,15 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+# This workflow will install Python dependencies, run SCA scan with a single version of Python
 
 name: Python SCA CI
-
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
   repository_dispatch:
-
 jobs:
-  build:
-
+  sca-scan:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
       with:
@@ -32,9 +27,8 @@ jobs:
       uses: zricethezav/gitleaks-action@master
     - name: Cloud Defense SCA Scan
       env:
-        #SCA_SCAN_URL: https://cd-scanner.herokuapp.com/processAndSave
         SCAN_URL: https://cd-scanner.herokuapp.com
         CD_API_KEY: ${{ secrets.CD_API_KEY }}
       run: |
         curl https://raw.githubusercontent.com/CloudDefenseAI/cd/master/latest/cd-latest-linux-x64.tar.gz > /tmp/cd-latest-linux-x64.tar.gz && tar -C /tmp -xzf /tmp/cd-latest-linux-x64.tar.gz && chmod +x /tmp/cdefense
-        /tmp/cdefense scan --verbose -q --lang=python --project-name=vulnerable-python --path=${PWD}
+        /tmp/cdefense scan -q --lang=python --project-name=vulnerable-python
