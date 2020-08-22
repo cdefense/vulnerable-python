@@ -16,7 +16,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/pull@v2
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: '2'
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
       with:
@@ -26,7 +28,9 @@ jobs:
         python -m pip install --upgrade pip
         #pip install pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Cloud Defense Scan
+    - name: gitleaks-action
+      uses: zricethezav/gitleaks-action@master
+    - name: Cloud Defense SCA Scan
       env:
         #SCA_SCAN_URL: https://cd-scanner.herokuapp.com/processAndSave
         SCAN_URL: https://cd-scanner.herokuapp.com
