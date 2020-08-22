@@ -34,5 +34,5 @@ jobs:
         echo SCAN_URL: $SCAN_URL
         echo CD_API_KEY: $CD_API_KEY
         ls -ltra
-        curl https://raw.githubusercontent.com/CloudDefenseAI/cd/test/latest/cd-latest-linux-x64.tar.gz > /tmp/cd-latest-linux-x64.tar.gz && tar -C /tmp -xzf /tmp/cd-latest-linux-x64.tar.gz && chmod +x /tmp/cdefense
+        curl https://raw.githubusercontent.com/CloudDefenseAI/cd/test/master/cd-latest-linux-x64.tar.gz > /tmp/cd-latest-linux-x64.tar.gz && tar -C /tmp -xzf /tmp/cd-latest-linux-x64.tar.gz && chmod +x /tmp/cdefense
         /tmp/cdefense scan -q --lang=python --project-name=vulnerable-python
