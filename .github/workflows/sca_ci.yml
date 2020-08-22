@@ -25,11 +25,12 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: gitleaks-action
       uses: zricethezav/gitleaks-action@master
+    - name: set-env-var
+      run: echo '::set-env name=GIT_SHA::$GITHUB_SHA'
     - name: Cloud Defense SCA Scan
       env:
         SCAN_URL: https://cd-scanner.herokuapp.com
         CD_API_KEY: ${{ secrets.CD_API_KEY }}
-        GIT_SHA: ${{ GITHUB_SHA }}
       run: |
         echo GITHUB_SHA: $GITHUB_SHA
         echo GIT_SHA: $GIT_SHA
