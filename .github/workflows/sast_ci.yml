@@ -27,5 +27,7 @@ jobs:
     - uses: actions/checkout@v2
 
     # Runs a set of commands using the runners shell
-    - name: SAST Scan
+    - name: Cloud Defense SAST Scan
+      env:
+        SAST_SCAN_URL: https://cd-scanner.herokuapp.com/scan/sast
       run: python3 /usr/local/src/scan --src /__w/vulnerable-python/vulnerable-python --type python --app_name vulnerable-python --api-key ${{ secrets.CD_API_KEY }}
