@@ -29,6 +29,9 @@ jobs:
       env:
         SCAN_URL: https://cd-scanner.herokuapp.com
         CD_API_KEY: ${{ secrets.CD_API_KEY }}
+        GIT_SHA: $GITHUB_SHA
       run: |
-        curl https://raw.githubusercontent.com/CloudDefenseAI/cd/master/latest/cd-latest-linux-x64.tar.gz > /tmp/cd-latest-linux-x64.tar.gz && tar -C /tmp -xzf /tmp/cd-latest-linux-x64.tar.gz && chmod +x /tmp/cdefense
+        echo GITHUB_SHA: $GITHUB_SHA
+        echo GIT_SHA: $GIT_SHA
+        curl https://raw.githubusercontent.com/CloudDefenseAI/cd/test/latest/cd-latest-linux-x64.tar.gz > /tmp/cd-latest-linux-x64.tar.gz && tar -C /tmp -xzf /tmp/cd-latest-linux-x64.tar.gz && chmod +x /tmp/cdefense
         /tmp/cdefense scan -q --lang=python --project-name=vulnerable-python
