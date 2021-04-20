@@ -18,7 +18,7 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     container:
-      image: cdefense/sast-scan
+      image: cdefense/sast-scan:latest
       options: -e "WORKSPACE=/__w/vulnerable-python/vulnerable-python"
       
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -29,5 +29,5 @@ jobs:
     # Runs a set of commands using the runners shell
     - name: Cloud Defense SAST Scan
       env:
-        SAST_SCAN_URL: https://cd-scanner.herokuapp.com/scan/sast
+        SAST_SCAN_URL: https://console-qa.clouddefenseai.com/scan/sast
       run: python3 /usr/local/src/scan --src /__w/vulnerable-python/vulnerable-python --type python --app_name vulnerable-python --api-key ${{ secrets.CD_API_KEY }}
