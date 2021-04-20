@@ -27,7 +27,7 @@ jobs:
       uses: zricethezav/gitleaks-action@master
     - name: Cloud Defense SCA Scan
       env:
-        SCAN_URL: https://cd-scanner.herokuapp.com
+        SCAN_URL: https://console-qa.clouddefenseai.com
         CD_API_KEY: ${{ secrets.CD_API_KEY }}
       run: |
         echo GITHUB_SHA: $GITHUB_SHA
